@@ -41,15 +41,15 @@ class Stack {
   }
 
   findMin() {
-    let minValue = Infinity
-    let current = this.top
+    let minValue = Infinity;
+    let current = this.top;
     while (current) {
       if (current.data < minValue) {
-        minValue = current.data
+        minValue = current.data;
       }
-      current = current.next
+      current = current.next;
     }
-    return minValue
+    return minValue;
   }
 
   peek() {
@@ -57,25 +57,35 @@ class Stack {
   }
 
   sort() {
-let sorted = new Stack()
-while(!this.isEmpty()) {
-  console.log(this.pop())
-  sorted.push(this.pop())
-}
+    // let sorted = new Stack();
+    // while (!this.isEmpty()) {
+    //   console.log(this.pop());
+    //   sorted.push(this.pop());
+    // }
 
-   // let sorted = new Stack()
-   // while(!inputStack.isEmpty()) {
-     while (!sorted.isEmpty()) {
-      let tmp = sorted.pop()
-     //console.log(tmp)
-      while (this.length > 0 && tmp.data > this.peek()) {
-        sorted.push(this.pop())
-      }
-      this.push(tmp)
-    }
+    // // let sorted = new Stack()
+    // // while(!inputStack.isEmpty()) {
+    // while (!sorted.isEmpty()) {
+    //   let tmp = sorted.pop();
+    //   //console.log(tmp)
+    //   while (this.length > 0 && tmp.data > this.peek()) {
+    //     sorted.push(this.pop());
+    //   }
+    //   this.push(tmp);
+    // }
     //console.log(sorted)
-    
-  }
+    let arr = []
+    let current = this.top
+    while (current) {
+      arr.push(current.data)
+      current = current.next
+    }
+  
+    arr.sort((a, b) => b < a ? -1 : 1).map(el => {
+      this.push(el)
+    })
+   
+}
 }
 
 class Queue {
@@ -83,7 +93,7 @@ class Queue {
     this.first = null;
     this.last = null;
     this.size = 0;
-   // this.max;
+    // this.max;
   }
 
   count() {
@@ -119,15 +129,15 @@ class Queue {
   }
 
   findMax() {
-    let maxValue = -Infinity
-    let current = this.first
+    let maxValue = -Infinity;
+    let current = this.first;
     while (current) {
       if (current.data > maxValue) {
-        maxValue = current.data
+        maxValue = current.data;
       }
-      current = current.next
+      current = current.next;
     }
-    return maxValue
+    return maxValue;
   }
 
   getLast() {
@@ -143,24 +153,23 @@ class Queue {
   }
 }
 
-
-
-// wordStack = new Stack();
-// for (let word of words) {
-//   wordStack.push(word);
-// }
+wordStack = new Stack();
+for (let word of words) {
+  wordStack.push(word);
+}
 // console.log({wordStack})
 // console.log(wordStack.sort())
 // console.log(wordStack.isEmpty())
 // console.log(wordStack.size())
+wordStack.sort()
 
-numStack = new Stack();
-for (let num of nums) {
-  numStack.push(num);
-}
-//console.log(numStack.peek())
-numStack.sort()
-//console.log(numStack.peek())
+// numStack = new Stack();
+// for (let num of nums) {
+//   numStack.push(num);
+// }
+// console.log(numStack.peek())
+// numStack.sort();
+// console.log(numStack.peek())
 // let sortedNums = numStack.sort(numStack)
 // console.log("sortedNums", sortedNums)
 
