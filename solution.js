@@ -12,19 +12,19 @@ class Node {
 class Stack {
   constructor() {
     this.top = null;
-    this.size = 0;
+    this.len = 0;
   }
 
   push(data) {
     const node = new Node(data);
     node.next = this.top;
     this.top = node;
-    this.size++;
+    this.len++;
     return this.top.data;
   }
 
   size() {
-    return this.size;
+    return this.len;
   }
 
   pop() {
@@ -32,21 +32,50 @@ class Stack {
     const temp = this.top;
     this.top = temp.next;
     temp.next = null;
-    this.size--;
+    this.len--;
     return temp;
   }
 
   isEmpty() {
-    return this.size === 0;
+    return this.len === 0;
   }
 
-  findMin() {}
+  findMin() {
+    let minValue = Infinity
+    let current = this.top
+    while (current) {
+      if (current.data < minValue) {
+        minValue = current.data
+      }
+      current = current.next
+    }
+    return minValue
+  }
 
   peek() {
     return this.top ? this.top : null;
   }
 
-  sort() {}
+  sort() {
+let sorted = new Stack()
+while(!this.isEmpty()) {
+  console.log(this.pop())
+  sorted.push(this.pop())
+}
+
+   // let sorted = new Stack()
+   // while(!inputStack.isEmpty()) {
+     while (!sorted.isEmpty()) {
+      let tmp = sorted.pop()
+     //console.log(tmp)
+      while (this.length > 0 && tmp.data > this.peek()) {
+        sorted.push(this.pop())
+      }
+      this.push(tmp)
+    }
+    //console.log(sorted)
+    
+  }
 }
 
 class Queue {
@@ -54,7 +83,7 @@ class Queue {
     this.first = null;
     this.last = null;
     this.size = 0;
-    this.max;
+   // this.max;
   }
 
   count() {
@@ -89,7 +118,17 @@ class Queue {
     return this.size;
   }
 
-  findMax() {}
+  findMax() {
+    let maxValue = -Infinity
+    let current = this.first
+    while (current) {
+      if (current.data > maxValue) {
+        maxValue = current.data
+      }
+      current = current.next
+    }
+    return maxValue
+  }
 
   getLast() {
     return this.last ? this.last : null;
@@ -103,6 +142,27 @@ class Queue {
     return this.first ? this.first : null;
   }
 }
+
+
+
+// wordStack = new Stack();
+// for (let word of words) {
+//   wordStack.push(word);
+// }
+// console.log({wordStack})
+// console.log(wordStack.sort())
+// console.log(wordStack.isEmpty())
+// console.log(wordStack.size())
+
+numStack = new Stack();
+for (let num of nums) {
+  numStack.push(num);
+}
+//console.log(numStack.peek())
+numStack.sort()
+//console.log(numStack.peek())
+// let sortedNums = numStack.sort(numStack)
+// console.log("sortedNums", sortedNums)
 
 module.exports = {
   Node,
