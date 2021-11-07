@@ -71,6 +71,7 @@ class Stack {
   sort() {
     let arr = []
     let node = this.top
+
     for (let i = 0; i < this.size(); i++) {
       arr.push(node.data)
       node = node.next
@@ -78,6 +79,7 @@ class Stack {
 
     const sortedArr = arr.sort((a, b) => b < a ? -1 : 1)
     this.top = new Node(sortedArr[0])
+
     for (let i = 1; i < sortedArr.length; i++) {
       this.push(sortedArr[i]);
     }
