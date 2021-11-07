@@ -102,7 +102,7 @@ class Queue {
       this.last.next = node;
       this.last = node;
     }
-    return ++this.size;
+    return this.size++;
   }
 
   dequeue() {
@@ -115,7 +115,7 @@ class Queue {
       this.last = null;
     }
 
-    this.first = this.first.next;
+    this.first = dequeued.next;
     this.size--;
     
     return dequeued.data;
