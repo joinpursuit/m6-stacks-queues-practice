@@ -52,7 +52,7 @@ class Queue {
 
   }
   size() {
-
+    return this.size;
   }
   max() {
 
@@ -89,10 +89,18 @@ class Stack {
     }
   }
   size() {
-  
+
   }
   findMin () {
-
+    let min = Infinity;
+    let current = this.top;
+    while (current) {
+      if (current.data < min) {
+        min = current.data;
+      }
+      current = current.next;
+    }
+    return min;
   }
   sort () {
 
