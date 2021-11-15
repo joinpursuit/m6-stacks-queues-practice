@@ -31,7 +31,7 @@ describe("Stack", () => {
     expect(wordStack.pop().data).toStrictEqual("dog");
   });
   test("Count size of stack", () => {
-    expect(wordStack.size()).toEqual(8);
+    expect(wordStack.isSize()).toEqual(9);
   });
   test("Check if stack is empty", () => {
     let testStack = new Stack();
