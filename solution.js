@@ -67,14 +67,13 @@ class Stack {
       }
       current = current.next;
     }
-    if (this.top.data != this.findMin()) {
-      return this.sort();
+    let check = this.top;
+    while (check.next) {
+      if (check.data > check.next.data) {
+        return this.sort();
+      }
+      check = check.next;
     }
-    // // Cheat for test
-    // if (this.top.data != this.findMin()) {
-    //   this.top = new Node(this.findMin(), this.top);
-    // }
-    // return this.top;
   }
 }
 
@@ -135,26 +134,6 @@ class Queue {
     return this.first;
   }
 }
-
-let stack = new Stack();
-// console.log(stack);
-// console.log(stack.isEmpty());
-stack.push(0);
-// console.log(stack.isEmpty());
-stack.push(4);
-stack.push(2);
-stack.push(43);
-console.log(stack.top);
-stack.sort();
-// console.log(stack.top);
-// stack.sort();
-// console.log(stack.top);
-// stack.sort();
-console.log(stack.top);
-// stack.sort();
-// console.log(stack);
-// console.log(stack);
-// // console.log(stack.size());
 module.exports = {
   Node,
   Queue,
