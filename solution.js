@@ -12,6 +12,10 @@ class Stack{
   constructor(){
     this.head = null;
   }
+
+  push(data){
+    const newNode = new Node(data)
+  }
 }
 
 class Queue{
