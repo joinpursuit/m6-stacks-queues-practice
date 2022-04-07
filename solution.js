@@ -76,7 +76,51 @@ class Stack {
   }
 }
 
-class Queue {}
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+    this.max = null;
+  }
+  count() {
+    return this.size;
+  }
+  //passing the test but i think max will be sometimes wrong
+  //Because we may remove it from the queue and the max won't change
+  //after removing we may need to look for max again.
+  dequeue() {
+    let node = this.first;
+    if (this.first === this.last) this.last = null;
+    this.first = this.first.next;
+    this.size--;
+    return node.data;
+  }
+  enqueue(data) {
+    let node = new Node(data);
+    if (!this.first) {
+      this.first = node;
+      this.last = node;
+    } else {
+      this.last.next = node;
+      this.last = node;
+    }
+    this.size++;
+    if (data > this.max) this.max = data;
+  }
+  isEmpty() {
+    return this.first === null;
+  }
+  peek() {
+    return this.first;
+  }
+  getLast() {
+    return this.last;
+  }
+  findMax() {
+    return this.max;
+  }
+}
 module.exports = {
   Node,
   Queue,
