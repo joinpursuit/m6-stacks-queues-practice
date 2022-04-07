@@ -121,6 +121,10 @@ class Queue {
   getLast() {
     return this.last;
   }
+
+  // findMax(value) {
+  //   let;
+  // }
 }
 
 module.exports = {
