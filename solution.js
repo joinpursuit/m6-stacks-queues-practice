@@ -24,7 +24,9 @@ class Stack{
   }
 
   pop(){
-
+    let item = this.top
+    this.top = this.top.next
+    return item
   }
 
   size(){
