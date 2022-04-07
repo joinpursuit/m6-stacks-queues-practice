@@ -17,11 +17,31 @@ class Stack {
     let node = this.top;
     let newNode = new Node(value);
     newNode.next = node;
-    this.top = newNode;
-
-    this.size++ 
+    this.top = newNode; 
    
-    return this.size
+    return this.size()
+  }
+
+  size() {
+    let node = this.top
+    let counter = 0
+
+    while (node) {
+      counter++
+      node = node.next
+    }
+    return counter
+  }
+
+  pop() {
+    let node = this.top
+    this.top = node.next
+    
+    return node 
+  }
+
+  isEmpty() {
+    return !this.size()
   }
 }
 
