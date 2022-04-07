@@ -57,7 +57,6 @@ class Stack {
 
   sort() {
     let current = this.top;
-    let beginning = true;
     while (current.next) {
       let next = current.next;
       if (current.data > next.data) {
@@ -65,11 +64,7 @@ class Stack {
         current.data = next.data;
         next.data = temp;
         current.next = next;
-        if (beginning) {
-          this.top = current;
-        }
       }
-      beginning = false;
       current = current.next;
     }
     if (this.top.data != this.findMin()) {
