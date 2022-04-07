@@ -9,13 +9,13 @@ class Node {
 }
 
 class Stack {
-  constructor(top) {
-    this.top = top || null; 
+  constructor() {
+    this.top = null; 
   }
 
-  push(value) {
+  push(data) {
     let node = this.top;
-    let newNode = new Node(value);
+    let newNode = new Node(data);
     newNode.next = node;
     this.top = newNode; 
    
@@ -43,20 +43,107 @@ class Stack {
   isEmpty() {
     return !this.size()
   }
-}
 
-class Queue {
-  constructor(first, last) {
-    this.first = first || null;
-    this.last = last || null; 
-    this.size = 0;
-    this.max = 0;
+  findMin() {
+    let node = this.top 
+    let min = this.top.data
+
+    while (node) {
+      if (min > node.data) {
+        min = node.data
+      }
+     
+      node = node.next
+    }
+    return min
+  }
+
+  peek() {
+    return this.top
+  }
+
+  sort() {
+    let node = this.top 
+    let curr = node 
+
+    while(node) {
+      if (curr.data < node.next.data ) {
+        let temp = node.next.next
+        node.next = temp 
+        this.top.push(node.next)
+      }
+    }
   }
 }
 
-// if (this.max < node.data) {
-//   this.max = node.data 
-// }
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null; 
+    this.size = 0;
+    this.max = 0;
+  }
+
+  count() {
+    return this.size
+  }
+
+  enqueue(data) {
+    let newNode = new Node(data)
+    
+    if(!this.first) {
+      this.first = newNode
+      this.last = newNode
+    } else {
+      this.last.next = newNode
+      this.last = newNode
+    }
+    this.size++
+  }
+
+  dequeue() {
+    if (!this.first) {
+      throw new Error("Nothing in the stack")
+    }
+
+    if (this.first === this.last) {
+      this.last = null
+    }
+
+    let temp = this.first
+    this.first = this.first.next;
+
+    this.size--
+
+    return temp.data 
+  }
+
+  isEmpty() {
+    return !this.first
+  }
+
+  peek() {
+    return this.first
+  }
+
+  getLast() {
+    return this.last
+  }
+
+  findMax() {
+    let node = this.first
+    let max = this.first
+    
+    while(node) {
+      if (max.data < node.data) {
+        max = node;
+      }
+      node = node.next
+    }
+    return max.data
+  }
+}
+
 
 module.exports = {
   Node,
