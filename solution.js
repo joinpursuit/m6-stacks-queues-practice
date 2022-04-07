@@ -10,11 +10,17 @@ class Node{
 
 class Stack{
   constructor(){
-    this.head = null;
+    this.top = null;
   }
 
   push(data){
     const newNode = new Node(data)
+    if(this.top === null){
+      this.top = newNode
+    } else {
+      newNode.next = this.top
+      this.top = newNode
+    }
   }
 }
 
