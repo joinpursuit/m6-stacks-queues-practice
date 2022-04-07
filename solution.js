@@ -22,6 +22,20 @@ class Stack{
       this.top = newNode
     }
   }
+
+  pop(){
+
+  }
+
+  size(){
+    let currentNode = this.top
+    let counter = 0
+    while(currentNode){
+      currentNode = currentNode.next
+      ++counter
+    }
+    return counter
+  }
 }
 
 class Queue{
