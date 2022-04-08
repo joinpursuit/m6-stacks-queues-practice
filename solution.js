@@ -40,7 +40,8 @@ class Stack{
   }
 
   isEmpty(){
-    
+    if(this.top === null) return true
+    return false
   }
 }
 
