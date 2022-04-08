@@ -67,9 +67,8 @@ class Stack {
     2. Return null, because the list is empty.
     3. set node to the top.
     4. While there is a node in the list...
-    5. this.top is reassigned to the pointer for the next node.
-    6. Because the pointer for top shifts to the next node, the original top is abandoned.
-    6. Return the node.
+    5. This.top is reassigned to the pointer for the next node.
+    6. Because the pointer for top shifts to the next node, the original top is abandoned. Returning the node.
   */
   pop(){
     if (this.top === null){
@@ -103,17 +102,33 @@ class Stack {
 
   */
   findMin(data){
-    // let node = this.top;
-    // while (node){
-    //   if (node.data < node.next){
-    //     this.top = node.data;
-    //     node = this.top;
-    //   }
-    //   // console.log("WhatIsnode.data:", node.data)
-    //   // console.log("WhatIsnode.next.data:", node.next.data)
-    // node = node.next;
-    // }
-    // return node;
+    /*
+        (2) (3) (1) (5) (4)
+
+      1. take the top and the next.
+       -- While there is a node --
+      2. if the first (2) is smaller than next (3),
+      3. keep the first (2) and throw away next (3) by moving pointer of `next` to the `next.next` one.
+      4. top = (2) and next is (1).
+            (3) was removed
+
+        (2) --> (1) (5) (4)
+
+      4. if the first (2) is bigger than next (1),
+      5. keep the next (1) and throw away the first (2), by moving pointer to `next` (like pop)
+            (2) was removed
+      
+             --> (1) (5) (4)
+      */
+     let node = this.top;
+    while (node){
+      if (this.top < node.next){
+        node.next = node.next.next;
+      } else if (this.top > node.next){
+        this.top = node.next;
+      }
+      return node.data;
+    }
   }
   // peek top node
   /*
