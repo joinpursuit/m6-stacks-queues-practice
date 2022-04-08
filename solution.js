@@ -112,10 +112,14 @@ class Stack {
   }
   // peek top node
   /*
-    1. See the value of the top node's data by returning it
+    1. Guard clause - if the top is null, the list is empty. Throw an error.
+    2. See the value of the top node's data by returning it
   */
   peek(){
-    return this.top.data;
+    if (this.top === null){
+      throw new Error("Error: The stack is empty ");
+    }
+    return this.top;
   }
   // sort - sort the stack into ascending order. CHALLENGE only use stacks to achieve this (no arrays or objects etc.)
   sort(){}
