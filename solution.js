@@ -45,7 +45,7 @@ class Stack{
   }
 
   peek(){
-    
+    return this.top
   }
 }
 
