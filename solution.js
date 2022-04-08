@@ -1,5 +1,6 @@
 const { nums, words } = require("./data/data.js");
 const { inspect } = require("util");
+const { timeStamp } = require("console");
 
 class Node {
   constructor(data) {
@@ -62,7 +63,60 @@ class Queue {
   count() {
     return this.size;
   }
+
+  enqueue(data) {
+    let newItem = new Node(data);
+    if (!this.first) {
+      this.first = newItem;
+      this.last = newItem;
+    } else {
+      this.last.next = newItem;
+      this.last = newItem;
+    }
+    ++this.size;
+    //if the data is more than the count then the count is now the data
+    if (data > this.max) {
+      this.max = data;
+    }
+  }
+
+  dequeue() {
+    let item = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return item.data;
+  }
+
+  //added the conditional in enqueue and now i dont even understand how it works or if it actually did
+  findMax() {
+    return this.max;
+  }
+
+  getLast() {
+    return this.last;
+  }
+
+  isEmpty() {
+    return this.first === null;
+  }
+
+  peek() {
+    if (this.first === null) {
+      throw new Error("This queue is empty!");
+    }
+    return this.first;
+  }
 }
+
+const queue = new Queue();
+
+queue.enqueue("Jan");
+queue.enqueue("Feb");
+
+console.log(queue);
 
 module.exports = {
   Node,
