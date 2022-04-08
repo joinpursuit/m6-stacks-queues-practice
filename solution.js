@@ -66,15 +66,20 @@ class Stack {
     1. Guard clause - if the top is null, there's nothing in the list.
     2. Return null, because the list is empty.
     3. set node to the top.
-    4. this.top is reassigned to the pointer for the next node.
-    5. Because the pointer for top shifts to the next node, the original top is abandoned.
+    4. While there is a node in the list...
+    5. this.top is reassigned to the pointer for the next node.
+    6. Because the pointer for top shifts to the next node, the original top is abandoned.
+    6. Return the node.
   */
   pop(){
     if (this.top === null){
       return null;
     }
     let node = this.top;
-    this.top = node.next;
+    if (node){
+      this.top = node.next;
+    }
+    return node;
   }
   // check if list is empty
   /*
