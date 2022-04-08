@@ -75,14 +75,13 @@ class Stack {
     let min = this.top;
 
     while (current !== null) {
-      min = min.data > current.data ? current : min;
+      min = min.data >= current.data ? current : min;
       current = current.next;
     }
 
     switch (true) {
       case min === null:
         return min;
-        break;
       case this.top.prev === null && this.top.next === null:
         this.top = this.bot = null;
         break;
