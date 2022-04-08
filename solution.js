@@ -43,6 +43,10 @@ class Stack{
     if(this.top === null) return true
     return false
   }
+
+  peek(){
+    
+  }
 }
 
 class Queue{
