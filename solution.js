@@ -106,6 +106,7 @@ class Queue{
     const item = this.first
     this.first = this.first.next
     --this.size
+    this.max = null
     return item.data
   }
 
@@ -126,7 +127,17 @@ class Queue{
   }
 
   findMax(){
-    
+    if(this.max) return this.max
+    let max = this.first.data
+    let currentNode = this.first.next
+    while(currentNode){
+      if(max < currentNode.data){
+        max = currentNode.data
+      }
+      currentNode = currentNode.next
+    }
+    this.max = max
+    return max
   }
 }
 
