@@ -59,7 +59,27 @@ class Stack {
     return min;
   }
 
-  sort() {}
+  sort() {
+    //create an array with all the data
+    //sort the array that we just created
+    //create a for loop to create a new stack
+    //set this.top to the newstack.top
+    //return this
+    let array = [];
+    let currentNode = this.top;
+    while (currentNode !== null) {
+      array.push(currentNode.data);
+      currentNode = currentNode.next;
+    }
+    array.sort().reverse();
+    let newStack = new Stack();
+    for (let i = 0; i < array.length; i++) {
+      newStack.push(array[i]);
+    }
+    this.top = newStack.top;
+    console.log(this);
+    return this;
+  }
 }
 
 class Queue {
@@ -68,7 +88,10 @@ class Queue {
     this.first = null;
     this.last = null;
     this.size = 0;
+    this.max = null;
   }
+
+  count() {}
 
   isEmpty() {
     //if our first is  equal to null then our queue is empty
@@ -76,18 +99,56 @@ class Queue {
   }
 
   //we are adding data
+  //enqueue should return the new size
   enqueue(data) {
-    //creating an instance of node
+    //creating a new instance of node with data being past
     let newItem = new Node(data);
     //if there is no one on line make them the first person
     //otherwise make them last
     if (!this.first) {
+      //the first person if they are the only one will be first and last
       this.first = newItem;
       this.last = newItem;
-      this.size++;
     } else {
+      //below is us updating what is last
+      //using our current last will point to the newest last
+      this.last.next = newItem;
+      //set the newest last the actual value
       this.last = newItem;
     }
+
+    return ++this.size;
+  }
+
+  dequeue() {
+    let firstOut = this.first.data;
+    this.first = this.first.next;
+    this.size--;
+    return firstOut;
+  }
+
+  count() {
+    return this.size;
+  }
+
+  peek() {
+    return this.first;
+  }
+
+  getLast() {
+    return this.last;
+  }
+
+  findMax() {
+    let max = this.first.data;
+    let currentNode = this.first.next;
+    while (currentNode !== null) {
+      if (max < currentNode.data) {
+        max = currentNode.data;
+      }
+      currentNode = currentNode.next;
+    }
+    return max;
   }
 }
 
