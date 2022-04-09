@@ -103,7 +103,9 @@ class Queue{
   }
 
   dequeue(){
-    
+    const item = this.first
+    this.first = this.first.next
+    return item.data
   }
 }
 
