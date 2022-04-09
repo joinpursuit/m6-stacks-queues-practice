@@ -73,10 +73,37 @@ class Queue {
     }
   }
   // findMax data value
-  findMax(){}
+  findMax(){
+    let node = this.first;
+    console.log("node:", node)
+    while (node){
+      console.log("node.data:", node.data)
+      console.log("node.next:", node.next)
+      node = node.next;
+      if (node > this.max){
+        console.log("this.max:", this.max)
+        this.max = node.data;
+      }
+      console.log("this.max2:", this.max)
+      return this.max;
+    }
+  }
 
   // getLast node
-  getLast(){}
+  /*
+    1. Let node equal the first item
+    2. While there is a node... the pointer for node points to node.next
+    3. if the next node is null, that is the last one in the list. So return the node.
+  */
+  getLast(){
+    let node = this.first;
+    while (node){
+      node = node.next;
+      if (node.next === null){
+        return node;
+      }
+    }
+  }
 
   // isEmpty check if list is empty
   isEmpty(){
