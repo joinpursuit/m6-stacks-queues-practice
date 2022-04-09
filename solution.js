@@ -108,6 +108,10 @@ class Queue{
     --this.size
     return item.data
   }
+
+  count(){
+    
+  }
 }
 
 
