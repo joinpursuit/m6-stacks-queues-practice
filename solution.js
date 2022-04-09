@@ -90,9 +90,19 @@ class Queue{
     this.max = null
   }
 
-  enqueue(){
-    
+  enqueue(data){
+    const newNode = new Node(data)
+    if(this.first === null){
+      this.first = newNode
+      this.last = newNode
+    }else {
+      this.last.next = newNode
+      this.last = newNode
+    }
+    ++this.size
   }
+
+  
 }
 
 
