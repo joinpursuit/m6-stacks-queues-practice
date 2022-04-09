@@ -75,7 +75,6 @@ class Stack{
     for(let i = array.length-1; i >= 0; i--){
         newStack.push(array[i])
     }
-    console.log(newStack)
     this.top = newStack.top
 
     //reassign this.top to `newStack`
@@ -84,7 +83,9 @@ class Stack{
 }
 
 class Queue{
-
+  constructor(){
+    
+  }
 }
 
 
