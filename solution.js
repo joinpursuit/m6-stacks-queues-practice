@@ -102,7 +102,9 @@ class Queue{
     ++this.size
   }
 
-  
+  dequeue(){
+    
+  }
 }
 
 
