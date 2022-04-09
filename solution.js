@@ -90,7 +90,9 @@ class Queue{
     this.max = null
   }
 
-  en
+  enqueue(){
+    
+  }
 }
 
 
