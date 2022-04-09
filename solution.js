@@ -122,7 +122,7 @@ class Queue{
   }
 
   getLast(){
-    
+    return this.last
   }
 }
 
