@@ -18,17 +18,78 @@ class Queue {
   }
 
   // methods
-  count(){}
-  dequeue(){}
-  enqueue(){}
+  // Count size of queue
+  /*
+    1. Node is set to the first item
+    2. While there are nodes...
+    3. the size is already being tracked, so size increases by 1, each time in the while loop.
+    4. the pointer for the first item is moved to node.next
+    5. Returning the size, which has increased one time every time there has been a node..
+  */
+  count(){
+    let node = this.first;
+    while (node){
+      this.size++;
+      node = node.next;
+    }
+    return this.size;
+  }
+  // Can remove from queue using dequeue method
+  /*
+    1. Guard clause - If there is no first, the queue is empty.
+    2. If the first and last are the same, there's just one node.
+    3. Set the one node to null.
+    4. Let node be the first.
+    5. Move the pointer to first to be the next.
+    6. Return the node data.
+  */
+  dequeue(){
+    if (!this.first){
+      throw new Error("Can't remove from empty queue");
+    }
+    if (this.first === this.last){
+      this.last = null;
+    }
+    let node = this.first;
+    this.first = this.first.next;
+    return node.data;
+  }
+  // Can add to queue using enqueue method
+  /*
+    1. Create a new instance of a Node with the data passed in.
+    2. If there is no `first item`...
+    3. Set the `first item` and `last item` to the `new node`.
+    4. else, set the pointer of the last item to be the `new node`
+    5. the last item is set to the new node.
+  */
+  enqueue(data){
+    let newNode = new Node(data);
+    if (!this.first){
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+  }
   // findMax data value
   findMax(){}
+
   // getLast node
   getLast(){}
+
   // isEmpty check if list is empty
-  isEmpty(){}
+  isEmpty(){
+    return this.first === null;
+    // if (this.first === null){
+    //   return null;
+    // }
+  }
+
   // peek the first node
-  peek(){}
+  peek(){
+    return this.first;
+  }
 }
 
 class Stack {
@@ -142,9 +203,57 @@ class Stack {
     return this.top;
   }
   // sort - sort the stack into ascending order. CHALLENGE only use stacks to achieve this (no arrays or objects etc.)
-  sort(){}
+  /*
+    The     brown
+    quick   dog
+    brown   fox
+    fox     jumps
+    jumps   lazy
+    over    over
+    the     quick
+    lazy    The        
+    dog     the
+
+    1. Take first word, and iterate through the `next nodes`, until...
+    2. the first word is greater than >= or equal to the next node.
+    3. If it is, put that node there.
+    4. If there are no nodes greater than the first node, set this node to null.
+    Set this node to be the `first node` in the `newStack`.
+
+  */
+  sort(){
+    let node = this.top;
+    // console.log("node:", node)
+    // make a new empty stack to put the words back in
+    let newStack = new Stack();
+    let newStackTop = newStack.top;
+    // console.log("newStackTop:", newStackTop)
+    
+    // while there are nodes
+    while (node !== null){
+
+      // console.log("XXnode.data:", node.data);
+      // console.log("YYnode.next:", node.next);
+
+      // if the top node is >= everything in the list, make it the top of the new stack.
+      if (node.data > node.next){
+        newStackTop = node;
+      }
+      // console.log("newStackTop2:", inspect(newStackTop, true, 9, true));
+      node = node.next;
+    }
+    // console.log("finalnode:", node)
+    // console.log("newStack:", newStack)
+  }
 }
 
+// let myStack = new Stack();
+// myStack.push("Oh my...");
+// myStack.push("Bears");
+// myStack.push("Tigers");
+// myStack.push("Lions");
+// myStack.sort();
+// console.log("end:", myStack);
 
 module.exports = {
   Node,
