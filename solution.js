@@ -118,7 +118,7 @@ class Queue{
   }
 
   peek(){
-    
+    return this.first
   }
 }
 
