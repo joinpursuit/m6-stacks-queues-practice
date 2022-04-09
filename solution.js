@@ -114,7 +114,7 @@ class Queue{
   }
 
   isEmpty(){
-    
+    return this.first === null
   }
 }
 
