@@ -59,6 +59,10 @@ class Stack{
     }
     return min
   }
+
+  sort(){
+
+  }
 }
 
 class Queue{
