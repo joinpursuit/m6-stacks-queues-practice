@@ -69,12 +69,13 @@ class Stack{
       currentNode = currentNode.next
     }
     //sort array
-    array.sort().reverse()
+    array.sort()
     const newStack = new Stack()
     //use for loop to create `newStack`
-    for(let i = 0; i < array.length; i++){
+    for(let i = array.length-1; i >= 0; i--){
         newStack.push(array[i])
     }
+    console.log(newStack)
     this.top = newStack.top
 
     //reassign this.top to `newStack`
