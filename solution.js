@@ -112,6 +112,10 @@ class Queue{
   count(){
     return this.size
   }
+
+  isEmpty(){
+    
+  }
 }
 
 
