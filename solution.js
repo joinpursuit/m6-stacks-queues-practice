@@ -47,6 +47,10 @@ class Stack{
   peek(){
     return this.top
   }
+
+  findMin(){
+
+  }
 }
 
 class Queue{
