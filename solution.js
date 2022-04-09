@@ -61,7 +61,24 @@ class Stack{
   }
 
   sort(){
+    //make array of data from stack
+    const array = []
+    let currentNode = this.top
+    while(currentNode){
+      array.push(currentNode.data)
+      currentNode = currentNode.next
+    }
+    //sort array
+    array.sort().reverse()
+    const newStack = new Stack()
+    //use for loop to create `newStack`
+    for(let i = 0; i < array.length; i++){
+        newStack.push(array[i])
+    }
+    this.top = newStack.top
 
+    //reassign this.top to `newStack`
+    return this
   }
 }
 
