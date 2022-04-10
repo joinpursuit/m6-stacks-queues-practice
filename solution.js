@@ -65,46 +65,45 @@ class Stack {
   }
 
   sort() {
-    const sortedNode = this.createSort();
+    const createSort = () => {
+      let current = this.top;
+      let min = this.top;
+  
+      while (current !== null) {
+        min = min.data >= current.data ? current : min;
+        current = current.next;
+      }
+  
+      switch (true) {
+        case min === null:
+          return min;
+        case this.top.prev === null && this.top.next === null:
+          this.top = this.bot = null;
+          break;
+        case min === this.top:
+          this.top = this.top.next;
+          this.top.prev = null;
+          break;
+        case min === this.bot:
+          this.bot = this.bot.prev;
+          this.bot.next = null;
+          break;
+        default:
+          min.prev.next = min.next;
+          min.next.prev = min.prev;
+      }
+  
+      if (this.top !== null) {
+        min.next = createSort();
+        min.next.prev = min;
+      } else {
+        min.next = null;
+      }
+      return min;
+    }
+    const sortedNode = createSort();
     this.top = sortedNode;
     this.bot = this.findBot();
-  }
-
-  createSort() {
-    let current = this.top;
-    let min = this.top;
-
-    while (current !== null) {
-      min = min.data >= current.data ? current : min;
-      current = current.next;
-    }
-
-    switch (true) {
-      case min === null:
-        return min;
-      case this.top.prev === null && this.top.next === null:
-        this.top = this.bot = null;
-        break;
-      case min === this.top:
-        this.top = this.top.next;
-        this.top.prev = null;
-        break;
-      case min === this.bot:
-        this.bot = this.bot.prev;
-        this.bot.next = null;
-        break;
-      default:
-        min.prev.next = min.next;
-        min.next.prev = min.prev;
-    }
-
-    if (this.top !== null) {
-      min.next = this.createSort();
-      min.next.prev = min;
-    } else {
-      min.next = null;
-    }
-    return min;
   }
 
   findBot() {
