@@ -1,4 +1,4 @@
-// Dependencies
+//Dependencies
 const { nums, words } = require("./data/data.js");
 const { inspect } = require("util");
 
@@ -47,7 +47,15 @@ class Stack{
   };
 
   findMin(){
-
+    let temp = this.top;
+    while(temp){
+      if(this.top < temp.next){
+        temp.next = temp.next.next;
+      } else if(this.top > temp.next){
+        this.top = temp.next;
+      };
+    };
+    return temp.data;
   };
 
   peek(){
