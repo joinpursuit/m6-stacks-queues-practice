@@ -59,7 +59,10 @@ class Stack{
   };
 
   peek(){
-
+    if(this.top === null){
+      throw new Error("The stack is empty");
+    };
+    return this.top;
   };
 
   sort(){
