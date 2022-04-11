@@ -42,7 +42,7 @@ class Stack {
       return item;
     }
   }
-  size() {
+  getSize() {
     
   }
   isEmpty() {
