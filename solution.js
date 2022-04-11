@@ -246,27 +246,17 @@ class Stack {
   */
   sort(){
     let node = this.top;
-    // console.log("node:", node)
-    // make a new empty stack to put the words back in
-    let newStack = new Stack();
-    let newStackTop = newStack.top;
-    // console.log("newStackTop:", newStackTop)
-    
+    let min = this.top
     // while there are nodes
-    while (node !== null){
-
-      // console.log("XXnode.data:", node.data);
-      // console.log("YYnode.next:", node.next);
-
-      // if the top node is >= everything in the list, make it the top of the new stack.
-      if (node.data > node.next){
-        newStackTop = node;
+    while(node){
+      if (node.data < min.data){
+        min = node;
       }
-      // console.log("newStackTop2:", inspect(newStackTop, true, 9, true));
       node = node.next;
     }
-    // console.log("finalnode:", node)
-    // console.log("newStack:", newStack)
+    min.next = this.top;
+    this.top = min;
+    return min;
   }
 }
 
