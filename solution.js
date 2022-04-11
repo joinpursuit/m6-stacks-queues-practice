@@ -75,18 +75,14 @@ class Queue {
   // findMax data value
   findMax(){
     let node = this.first;
-    console.log("node:", node)
+    let max = this.first.data;
     while (node){
-      console.log("node.data:", node.data)
-      console.log("node.next:", node.next)
-      node = node.next;
-      if (node > this.max){
-        console.log("this.max:", this.max)
-        this.max = node.data;
+      if (max < node.data){
+        max = node.data;
       }
-      console.log("this.max2:", this.max)
-      return this.max;
+      node = node.next;
     }
+    return max;
   }
 
   // getLast node
