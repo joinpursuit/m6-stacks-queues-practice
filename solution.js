@@ -20,12 +20,21 @@ class Stack{
     this.top = newNode;
   };
 
-  size(){
-
+  pop(){
+    if(this.top === null) return null;
+    let temp = this.top;
+    this.top = temp.next;
+    return temp.data;
   };
 
-  pop(){
-
+  size(){
+    let count = 0;
+    let temp = this.top;
+    while(temp){
+      count++;
+      temp = temp.next;
+    };
+    return count;
   };
 
   isEmpty(){
