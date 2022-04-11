@@ -90,6 +90,7 @@ class Queue{
       this.last = null;
     }
     this.first = this.first.next;
+    this.size--;
     return node.data;
   }
 
@@ -103,7 +104,7 @@ class Queue{
       this.last = newNode;
     }
     this.size++;
-    
+
     if(data > this.max){
      this.max = data;
     }
