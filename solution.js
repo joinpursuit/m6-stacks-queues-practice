@@ -14,8 +14,10 @@ class Stack{
     this.top = top;
   };
   /////////////////// Stack Methods////////////////
-  push(){
-
+  push(value){
+    const newNode = new Node(value);
+    newNode.next = this.top;
+    this.top = newNode;
   };
 
   size(){
@@ -27,7 +29,11 @@ class Stack{
   };
 
   isEmpty(){
-
+    if(this.top = null){
+      return true;
+    } else{
+      return false;
+    };
   };
 
   findMin(){
