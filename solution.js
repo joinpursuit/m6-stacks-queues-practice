@@ -21,10 +21,15 @@ class Stack{
   };
 
   pop(){
-    if(this.top === null) return null;
+    if(this.top === null){
+      throw new Error("The stack is empty");
+    };
     let temp = this.top;
-    this.top = temp.next;
-    return temp.data;
+    if(temp){
+      let newTemp = temp.next;
+      this.top = newTemp;
+      return temp;
+    }
   };
 
   size(){
@@ -38,11 +43,7 @@ class Stack{
   };
 
   isEmpty(){
-    if(this.top = null){
-      return true;
-    } else{
-      return false;
-    };
+    
   };
 
   findMin(){
