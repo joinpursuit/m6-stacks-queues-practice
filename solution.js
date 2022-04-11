@@ -25,7 +25,7 @@ class Stack {
   size() {
     let node = this.top
     let counter = 0
-
+    
     while (node) {
       counter++
       node = node.next
@@ -64,15 +64,36 @@ class Stack {
 
   sort() {
     let node = this.top 
-    let curr = node 
+    let arr = [] 
+
+    if (node.next == null) {
+      return node 
+    }
 
     while(node) {
-      if (curr.data < node.next.data ) {
-        let temp = node.next.next
-        node.next = temp 
-        this.top.push(node.next)
-      }
+      arr.push(node.data)
+      node = node.next
     }
+
+    if (typeof arr[0] == "number") {
+      arr.sort((a,b) => b - a)
+    } else {
+      arr.sort((a, b) => {
+        if (b < a) {
+          return -1
+        } else if (a > b) {
+          return 1
+        } else {
+          return 0
+        }
+      })
+    }
+
+    let newStack = new Stack()
+    arr.forEach((data) => newStack.push(data))
+    
+    this.top = newStack.top
+    return this.top
   }
 }
 
