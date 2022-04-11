@@ -48,14 +48,14 @@ class Stack{
 
   findMin(){
     let temp = this.top;
+    let min = temp.data;
     while(temp){
-      if(this.top < temp.next){
-        temp.next = temp.next.next;
-      } else if(this.top > temp.next){
-        this.top = temp.next;
+      if(min > temp.data){
+        min = temp.data;
       };
+      temp = temp.next;
     };
-    return temp.data;
+    return min;
   };
 
   peek(){
@@ -68,10 +68,28 @@ class Stack{
 
 };
 
+class Queue{
+  constructor(){
+    this.first = null;
+    this.last = null;
+  };
+
+  ////////////// Queue Methods/////////////////
+  enqueue(){
+    
+  };
+
+  dequeue(){
+
+  };
+
+
+}
+
 
 
 module.exports = {
   Node,
-  // Queue,
+  Queue,
   Stack,
 };
