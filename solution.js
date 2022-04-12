@@ -40,8 +40,39 @@ class Stack {
   }
 
   findMin(){
-  
-}
+    let min = this.top.data;
+    let currentNode = this.top;
+    while(currentNode){
+    
+        if(currentNode.data < min) {
+            min = currentNode.data;
+        } 
+        currentNode = currentNode.next;
+    }
+    return min;
+  }
+
+  sort() {
+    let current = this.top;
+    while (current.next) {
+      let next = current.next;
+      if (current.data > next.data) {
+        let temp = current.data;
+        current.data = next.data;
+        next.data = temp;
+        current.next = next;
+      }
+      current = current.next;
+    }
+   let node = this.top;
+    while (node.next) {
+      if (node.data > node.next.data) {
+        return this.sort();
+      }
+      node = node.next;
+    }
+    return this.top
+  }
 }
 
 
