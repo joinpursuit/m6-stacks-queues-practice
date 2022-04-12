@@ -66,9 +66,21 @@ class Stack{
   };
 
   sort(){
-
+    let minimumVal = this.top;
+    let tempStack = this.top;
+    if(this.top === null){
+      throw new Error("The stack is empty");
+    };
+    while(tempStack !== null){
+      if(tempStack.data < minimumVal.data){
+        minimumVal = tempStack;
+      };
+      tempStack = tempStack.next;
+    }
+    minimumVal.next = this.top;
+    this.top = minimumVal;
+    return minimumVal;
   };
-
 };
 
 class Queue{
