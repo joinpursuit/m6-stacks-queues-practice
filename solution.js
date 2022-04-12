@@ -87,16 +87,58 @@ class Queue{
   constructor(){
     this.first = null;
     this.last = null;
+    this.size = 0;
+    this.max = 0;
   };
 
   ////////////// Queue Methods/////////////////
-  enqueue(){
-    
-  };
 
+  count(){
+    return this.size;
+  };
+  
   dequeue(){
+    if(this.first === null){
+      throw new Error("The queue is empty");
+    };
+    const item = this.first;
+    if(this.first === this.last){
+      this.last = null;
+    };
+    this.first = this.first.next;
+    this.size--;
+    return item.data;
+  };
+
+  enqueue(data){
+    let newItem = new Node(data);
+    if(!this.first){
+      this.first = newItem;
+      this.last = newItem;
+    } else{
+      this.last.next = newItem;
+      this.last = newItem;
+    };
+    return ++this.size;
+  };
+
+  findMax(){
 
   };
+
+  getLast(){
+
+  };
+
+  isEmpty(){
+    return this.first === null;
+  };
+
+  peek(){
+
+  };
+
+  
 
 
 }
