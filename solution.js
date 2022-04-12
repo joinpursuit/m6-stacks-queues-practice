@@ -67,9 +67,7 @@ class Stack {
 			arr.push(current.data);
 			current = current.next;
 		}
-		// sorted arr
 		let sorted = arr.sort();
-
 		let firstNode = new Node(sorted[0]);
 		let stack = new Stack(firstNode);
 
@@ -80,17 +78,8 @@ class Stack {
 		}
 		stack = this.top;
 		return stack;
-		// console.log(this.top);
 	}
 }
-
-// let previousNode = new Node("Jan");
-// let list = new LinkedList(previousNode);
-// for (let i = 0; i < months.length; i++) {
-//   let currentNode = new Node(months[i]);
-//   previousNode.next = currentNode;
-//   previousNode = currentNode;
-// }
 
 class Queue {
 	constructor() {
