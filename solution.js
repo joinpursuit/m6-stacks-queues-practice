@@ -78,21 +78,44 @@ class Stack {
   // }
 
   sort() {
-    // let node = this.top;
-    // let nextNode = this.top.next;
-    // while (node) {
-    //   if (node.data > nextNode.data) {
-    //     let largerNode = node;
+    let node = this.top;
+    let sortedArray = [];
+    while (node) {
+      sortedArray.push(node.data);
+      node = node.next;
+    }
+    // console.log(sortedArray);
+    sortedArray.sort((a, b) => {
+      if (a.toLowerCase() < b.toLowerCase()) {
+        return 1;
+      }
+      if (a.toLowerCase() > b.toLowerCase()) {
+        return -1;
+      }
+      return 0;
+    });
+    // console.log(sortedArray);
+    const newStack = new Stack();
+    for (const eachValue of sortedArray) {
+      newStack.push(eachValue);
+    }
+    // console.log(this);
+    this.top = newStack.top;
+
+    // console.log(newStack);
+    return this;
+
     // addToOrganizingStack(largerNode)
   }
 }
 
 const numStack = new Stack();
 
-for (const eachNumber of nums) {
+for (const eachNumber of words) {
   numStack.push(eachNumber);
 }
 
+console.log(numStack.sort());
 // console.log(wordStack.pop());
 
 // console.log(numStack.sort());
