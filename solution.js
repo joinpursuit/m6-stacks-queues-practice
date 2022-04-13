@@ -150,11 +150,7 @@ class Queue{
     };
     return this.first;
   };
-
-  
-
-
-}
+};
 
 
 
