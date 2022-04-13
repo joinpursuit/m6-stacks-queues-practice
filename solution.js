@@ -123,7 +123,17 @@ class Queue{
   };
 
   findMax(){
-
+    if(this.first === null){
+      throw new Error("The queue is empty");
+    };
+    let temp = this.first;
+    while(temp){
+      if(temp.data > this.max){
+        this.max = temp.data;
+      }
+      temp = temp.next;
+    };
+    return this.max;
   };
 
   getLast(){
