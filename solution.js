@@ -135,7 +135,10 @@ class Queue{
   };
 
   peek(){
-
+    if(this.first === null){
+      throw new Error("The queue is empty");
+    };
+    return this.first;
   };
 
   
