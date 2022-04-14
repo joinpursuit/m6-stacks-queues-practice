@@ -20,7 +20,7 @@ class Stack {
   pop(){
     if(this.top === null) {
       return null;
-  }
+    }
     let current = this.top;
     this.top = current.next;
     return current;
@@ -41,19 +41,52 @@ class Stack {
     return this.top;
   }
   findMin(){
+    if(this.isEmpty()){
+      return null;
+    }
     let min = this.top.data;
     let current = this.top;
     while(current){
-      if(current.data < min.data){
+      if(current.data < min){
         min = current.data;
       }
       current = current.next;
     }
     return min;
   }
-  // sort(){
+  convertToArr(){
+    let current = this.top;
+    let arr = [];
+    while(current){
+      arr.unshift(current.data);
+      current = current.next;
+    }
+    return arr;
+  }
+  sort(){
+    let stackArr = this.convertToArr();
+    stackArr.sort()//.reverse();
+    this.top = null;
 
-  // }
+    for(let i = stackArr.length-1; i >= 0; i--){
+      this.push(stackArr[i]);
+    }
+    // let arr = [];
+    // let current = this.top;
+    // while(current){
+    //   arr.push(current.data);
+    //   current = current.next;
+    // }
+    // arr.sort().reverse();
+    // console.log(arr)
+
+    // // this.top = null;
+    // for(let el of stackArr){
+    //   this.push(el)
+    // }
+    // console.log(newStack)
+    // return newStack.top
+  }
 }
 
 class Queue {
