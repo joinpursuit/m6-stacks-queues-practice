@@ -12,16 +12,20 @@ class Stack {
   constructor(top = null) {
     this.top = top;
   }
+  // insert
   push(value) {
-    const newNode = new Node(value);
+    let newNode = new Node(value);
+    // if property exists change pointer
     newNode.next = this.top;
+    // replace top with new node
     this.top = newNode;
   }
+  // remove
   pop() {
     if (this.top === null) return null;
     let temp = this.top;
     this.top = temp.next;
-    return temp.data;
+    return temp;
   }
   size() {
     let count = 0;
@@ -35,47 +39,85 @@ class Stack {
   isEmpty() {
     return this.top === null;
   }
-  // findMin(){}
+  findMin() {
+    if (this.isEmpty()) return null;
+    let temp = this.top;
+    let min = temp.data;
+    while (temp) {
+      if (temp.data < min) {
+        min = temp.data;
+      }
+      temp = temp.next;
+    }
+    return min;
+  }
   peek() {
     return this.top;
   }
-  // sort(){}
+  convertToArr() {
+    let temp = this.top;
+    let arr = [];
+    while (temp) {
+      arr.unshift(temp.data.toLowerCase());
+      temp = temp.next;
+    }
+    return arr;
+  }
+  sort(){
+    let stackArr = this.convertToArr()
+    stackArr.sort()
+    // stackArr.sort((a, b) => {
+    //   if(a < b) {
+    //     return 1
+    //   }
+    //   return -1
+    // })
+
+    this.top = null;
+
+    for(let i = stackArr.length -1; i >= 0; i--){
+      this.push(stackArr[i])
+    }
+  }
 }
 
 class Queue {
-  constructor(first, last) {
-    this.first = first;
-    this.last = last;
+  constructor() {
+    this.first = null;
+    this.last = null;
   }
   enqueue(value) {
     let newNode = new Node(value);
     if (!this.first) {
       this.first = newNode;
       this.last = newNode;
+      this.size = 0;
+      this.max = 0;
     } else {
       this.last.next = newNode;
       this.last = newNode;
     }
   }
-  dequeue(){
-    if(!this.first){
-      return null
+  dequeue() {
+    if (!this.first) {
+      return null;
     }
-    if(this.first === this.last){
+    if (this.first === this.last) {
       this.last = null;
     }
     let temp = this.first;
     this.first = this.first.next;
-    return temp.data
+    return temp.data;
   }
-  peek(){
-    return this.first
+  findMax() {}
+  peek() {
+    return this.first;
   }
-  getLast(){
-    return this.last
+  getLast() {
+    return this.last;
   }
-  isEmpty(){
-    
+  isEmpty() {
+    return this.first === null && this.last === null;
   }
 }
 
