@@ -43,7 +43,14 @@ class Stack {
     }
   }
   size() {
-    
+    let temp = this.top;
+    let counter = 0;
+
+    while(temp){
+      counter++;
+      temp = temp.next;
+    } 
+    return counter;
   }
   isEmpty() {
     return this.top === null;
@@ -54,8 +61,37 @@ class Stack {
     }
     return this.top;
   }
+  findMin(){
+    if(this.isEmpty()) return null;
+    let temp = this.top;
+    let min = temp.data;
+    while(temp){
+      if(temp.data < min){
+        min = temp.data;
+      }
+      temp = temp.next;
+    }
+    return min;
+  }
+  convertToArr(){
+    let temp = this.top;
+    let arr = [];
+    while(temp){
+      arr.unshift(temp.data.toLowerCase());
+      temp = temp.next
+    }
+    return arr;
+  }
   sort() {
-    
+    let stackArr = this.convertToArr();
+    stackArr.sort((a, b)=>{
+      return a < b ? 1 : -1
+    })
+    this.top = null;
+
+    for (let val of stackArr){
+      this.push(val);
+    }
   }
 }
 
@@ -64,6 +100,7 @@ class Queue {
     this.first = null;
     this.last = null;
     this.size = 0;
+    this.max = 0;
   }
   enqueue(data) {
     let newItem = new Node(data);
@@ -95,10 +132,30 @@ class Queue {
     return this.first;
   }
   count() {
-    
+    let temp = this.first;
+    let counter = 0;
+    while(temp){
+      counter++;
+      temp = temp.next;
+    }
+    return counter;
   }
   isEmpty() {
     return this.first === null;
+  }
+  getLast(){
+    return this.last;
+  }
+  findMax(){
+    let temp = this.first;
+    let max = 0; 
+    while(temp){
+      if(temp.data > max){
+        max = temp.data;
+      }
+      temp = temp.next;
+    }
+    return max;
   }
 }
 
