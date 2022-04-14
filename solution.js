@@ -63,9 +63,9 @@ class Stack {
     }
     return arr;
   }
-  sort(){
-    let stackArr = this.convertToArr()
-    stackArr.sort()
+  sort() {
+    let stackArr = this.convertToArr();
+    stackArr.sort();
     // stackArr.sort((a, b) => {
     //   if(a < b) {
     //     return 1
@@ -75,8 +75,8 @@ class Stack {
 
     this.top = null;
 
-    for(let i = stackArr.length -1; i >= 0; i--){
-      this.push(stackArr[i])
+    for (let i = stackArr.length - 1; i >= 0; i--) {
+      this.push(stackArr[i]);
     }
   }
 }
@@ -85,18 +85,17 @@ class Queue {
   constructor() {
     this.first = null;
     this.last = null;
+    this.size = 0;
+    this.max = 0;
   }
   enqueue(value) {
     let newNode = new Node(value);
     if (!this.first) {
       this.first = newNode;
-      this.last = newNode;
-      this.size = 0;
-      this.max = 0;
     } else {
       this.last.next = newNode;
-      this.last = newNode;
     }
+    this.last = newNode;
   }
   dequeue() {
     if (!this.first) {
@@ -109,7 +108,18 @@ class Queue {
     this.first = this.first.next;
     return temp.data;
   }
-  findMax() {}
+  findMax() {
+    let temp = this.first;
+    let max = 0;
+
+    while (temp) {
+      if (temp.data > max) {
+        max = temp.data;
+      }
+      temp = temp.next;
+    }
+    return max;
+  }
   peek() {
     return this.first;
   }
@@ -118,6 +128,15 @@ class Queue {
   }
   isEmpty() {
     return this.first === null && this.last === null;
+  }
+  count() {
+    let temp = this.first;
+    let count = 0;
+    while (temp) {
+      count++;
+      temp = temp.next;
+    }
+    return count;
   }
 }
 
