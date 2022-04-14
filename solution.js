@@ -107,7 +107,15 @@ class Queue {
       }
    }
    findMax() {
-
+      let temp = this.first.next;
+      let node = this.first.data;
+      while (temp) {
+        if (temp.data > node) {
+          node = temp.data;
+        }
+        temp = temp.next;
+      }
+      return node;
     }
    getLast() {
      return this.last;
