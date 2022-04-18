@@ -64,8 +64,13 @@ class Stack {
   sort(){
     let stackArr = this.convertToArr();
     stackArr.sort((a,b)=> {
-      return a < b ? 1: -1;
+      if(a<b){
+        return 1; 
+      } else {
+        return -1;
+      }
     });
+
     this.top = null;
 
     for(let val of stackArr){
@@ -80,6 +85,64 @@ class Queue {
     this.last = null;
     this.size = 0;
     this.max = 0;
+  }
+  enqueue(val){
+    let newNode = new Node(val)
+    if(this.first === null){
+      //When there is one element in queue, first and last is the same! 
+      this.first = newNode;
+      // this.last = newNode;
+    } else {
+      this.last.next = newNode;
+    }
+    this.last = newNode;
+  }
+  dequeue(){
+    //check if its empty
+    if(this.first === null) return null;
+
+    let temp = this.first; 
+
+    //check if theres only one element in arr
+    if(this.first === this.last) {
+      this.first = null;
+      this.last = null
+    } else {
+      this.first = this.first.next
+    }
+    //return the data instead of node
+    return temp.data
+  }
+  peek(){
+    //see node before you remove
+    return this.first;
+  }
+  getLast(){
+    return this.last;
+  }
+  isEmpty(){
+    //see if its empty
+    return this.first === null;
+  }
+  count(){
+    let temp = this.first;
+    let counter = 0;
+    while(temp){
+      counter++;
+      temp = temp.next
+    }
+    return counter;
+  }
+  findMax(){
+    let temp = this.first;
+    let max = 0;
+    while(temp){
+      if(temp.data > max){
+        max = temp.data
+      }
+      temp = temp.next;
+    }
+    return max
   }
 }
 
