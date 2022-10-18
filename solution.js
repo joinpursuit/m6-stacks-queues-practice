@@ -148,6 +148,23 @@ class Stack {
 
     return minNode.data;
   }
+
+  sort() {
+    let arr = [];
+    let tempNode = this.top;
+    while (tempNode) {
+      arr.push(tempNode.data);
+      tempNode = tempNode.next;
+    }
+
+    arr.sort();
+    tempNode = this.top;
+
+    for (let i = 0; i < arr.length; i++) {
+      tempNode.data = arr[i];
+      tempNode = tempNode.next;
+    }
+  }
 }
 
 module.exports = {
