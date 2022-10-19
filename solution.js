@@ -48,10 +48,12 @@ class Stack {
     return this.top;
   }
 
+  // variable for smallest, and temp node. compare current to next one, smallest one becomes slallest variable.
+  
   findMin() {
     if (this.isEmpty()) {
       return null;
-    }
+    }// error handling
 
     let minNode = this.top;
     let tempNode = this.top;
