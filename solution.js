@@ -79,8 +79,12 @@ class Queue {
   }
 
   count() {
-    let count = 0;
     let node = this.first;
+    while(node){
+      this.size++
+      node = this.last;
+    }
+    return this.size
   }
 
   dequeue() {
