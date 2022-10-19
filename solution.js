@@ -1,5 +1,5 @@
-const { nums, words } = require("./data/data.js");
-const { inspect } = require("util");
+const { nums, words } = require('./data/data.js');
+const { inspect } = require('util');
 
 class Node {
   constructor(data) {
@@ -38,7 +38,7 @@ class Stack {
 
     return count;
   }
-// check if the size method returns 0-> empty
+  // check if the size method returns 0-> empty
   isEmpty() {
     return this.size() === 0 ? true : false;
   }
@@ -49,11 +49,11 @@ class Stack {
   }
 
   // variable for smallest, and temp node. compare current to next one, smallest one becomes slallest variable.
-  
+
   findMin() {
     if (this.isEmpty()) {
       return null;
-    }// error handling
+    } // error handling
 
     let minNode = this.top;
     let tempNode = this.top;
@@ -72,12 +72,83 @@ class Stack {
 }
 
 class Queue {
-  constructor(){
+  constructor() {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
+    this.max = null;
+  }
+  count() {
+    return this.size;
+  }
 
+  dequeue() {
+    if (this.size === 0) {
+      return null;
+    }
+
+    if (this.size === 1) {
+      let tempNode = this.first;
+      this.first = null;
+      this.last = null;
+      this.size -= 1;
+      return tempNode;
+    }
+
+    let tempNode = this.first;
+    this.first = this.first.next;
+    this.size -= 1;
+    return tempNode.data;
+  }
+  enqueue(value) {
+    let newNode = new Node(value);
+    if (this.size === 0) {
+      this.first = newNode;
+      this.last = newNode;
+      this.size += 1;
+      return;
+    }
+
+    this.last.next = newNode;
+    this.last = newNode;
+    this.size += 1;
+  }
+
+  getLast() {
+    if (this.size === 0) {
+      return null;
+    } else {
+      return this.last;
+    }
+  }
+
+  isEmpty() {
+    return this.size === 0 ? true : false;
+  }
+
+  
+  peek() {
+    return this.first;
+  }
+
+  findMax() {
+    if (this.size === 0) {
+      return null;
+    }
+
+    let maxNode = this.first;
+    let tempNode = this.first;
+
+    while (tempNode) {
+      if (tempNode.data > maxNode.data) {
+        maxNode = tempNode;
+      }
+      tempNode = tempNode.next;
+    }
+
+    return maxNode.data;
   }
 }
-
-
 
 module.exports = {
   Node,
