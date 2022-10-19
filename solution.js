@@ -6,7 +6,17 @@ class Node {
     this.data = data
     this.next = null
   }
-  
+}
+class Stack {
+  constructor() {
+
+  }
+}
+
+class Queue {
+  constructor() {
+    
+  }
 }
 
 module.exports = {
