@@ -34,8 +34,7 @@ class Stack {
     if (item) {
       let newItem = item.next;
       this.top = newItem;
-      return item;
-    }
+    } return item;
   }
 
   peek() {
@@ -66,12 +65,18 @@ class Stack {
   }
 
   sort() {
-    // 1. Make temporary stack tempStack.
-    // 2. While the input stack is not empty, we will perform this:
-    // Pop an element from the input stack and call it temp.
-    // While tempStack is not empty and the top of tempStack is smaller than temp, pop elements from tempStack and push them into the input stack.
-    // Push temp into the tempStack.
-    // 3. The sorted numbers are in tempStack return tempStack.
+    let dataArray = [];
+    let node = this.top;
+    while (node) {
+      dataArray.push(node.data);
+      node = node.next;
+    }
+    let sortedArray = dataArray.sort();
+    this.top = null;
+    while(sortedArray.length > 0) {
+      let node = sortedArray.pop();
+      this.push(node);
+  } return dataArray
   }
 }
 
@@ -128,7 +133,13 @@ class Queue {
   }
 
   findMax() {
-
+    let dataArray = [];
+    let node = this.first;
+    while(node) {
+      dataArray.push(node.data);
+      node = node.next;
+    }
+    return Math.max(...dataArray)
   }
 }
 
