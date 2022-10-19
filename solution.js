@@ -65,26 +65,33 @@ class Stack {
   }
 
   sort() {
+    let arr = [];
+    let tempNode = this.top;
+    while (tempNode) {
+      arr.push(tempNode.data);
+      tempNode = tempNode.next;
+    }
 
-    
+    arr.sort();
+    tempNode = this.top;
+
+    for (let i = 0; i < arr.length; i++) {
+      tempNode.data = arr[i];
+      tempNode = tempNode.next;
+    }
   }
 }
 
 class Queue {
-  constructor() {
+  constructor(max) {
     this.first = null;
     this.last = null;
     this.size = 0;
-    this.max = 0;
+    this.max = max;
   }
 
   count() {
-    let node = this.first;
-    while(node){
-      this.size++
-      node = this.last;
-    }
-    return this.size
+    return this.size;
   }
 
   dequeue() {
@@ -113,9 +120,19 @@ class Queue {
   }
 
   findMax() {
-   
-  }
+    let max = this.first;
+    let node = this.first;
 
+    while (node) {
+      if (node.data > max.data) {
+        max = node;
+      }
+      node = node.next;
+    }
+
+    return max.data;
+  }
+   
   getLast() {
     return this.last;
   }
