@@ -43,9 +43,7 @@ class Stack {
     let min = this.top.data;
     let current = this.top;
     while (current) {
-      if (current.data < min) {
-        min = current.data;
-      }
+      if (current.data < min) min = current.data;
       current = current.next;
     }
     return min;
@@ -74,8 +72,8 @@ class Queue {
   }
   enqueue(val) {
     const newNode = new Node(val);
-    if (!this.first) this.first = newNode;
-    else this.last.next = newNode;
+    if (this.first) this.last.next = newNode;
+    else this.first = newNode;
     this.last = newNode;
   }
   dequeue() {
