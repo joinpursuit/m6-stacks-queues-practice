@@ -73,12 +73,37 @@ class Stack {
     }
   }
 }
+
 class Queue {
   constructor(first, last, size, max) {
     this.first = first;
     this.last = last;
     this.size = size;
     this.max = max;
+  }
+
+  enqueue(data) {
+    const newNode = new Node(data);
+    if (!this.first) {
+      this.first = newNode;
+    } else {
+      this.last.next = newNode;
+    }
+    this.last = newNode;
+    this.size++;
+  }
+
+  dequeue(data) {
+    if (!this.first) {
+      return null;
+    }
+    const item = this.first.data;
+    if (this.first.data === this.last.data) {
+      this.last = null;
+    }
+    this.first.data = this.first.next;
+    this.size--;
+    return item;
   }
 }
 
