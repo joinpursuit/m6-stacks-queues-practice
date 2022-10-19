@@ -77,15 +77,15 @@ class Stack {
     if (!this.top) {
       return "Nothing to sort";
     }
-    let tempStack = new Stack(); // temporary stack, will be sorted at end.
+    let tempStack = new Stack(); // temporary stack, will be the sorted one at end.
     while (this.top) {
       //while .this stack is not empty
-      let element = this.pop().data; //copy of value(data) at top of current stack
+      let element = this.pop().data; //pop and copy of value(data) at top of .this stack
       while (tempStack.top && tempStack.top.data < element) {
-        //while tempstack is not empty & temp.top is less than element
-        this.push(tempStack.pop().data); // push top of temp stack back to .this stack
+        //while tempstack is NOT empty & temp.top is LESS than element
+        this.push(tempStack.pop().data); // push top of temp stack onto .this stack
       }
-      tempStack.push(element); // push element into temp stack if tempstack top is >
+      tempStack.push(element); // push element into temp stack if tempstack top is > than .this top
     }
     this.top = tempStack.top; //  jest test expects .this mutation // otherwise can just return tempstack
   }
