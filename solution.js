@@ -34,7 +34,8 @@ class Stack {
     if (item) {
       let newItem = item.next;
       this.top = newItem;
-    } return item;
+    }
+    return item;
   }
 
   peek() {
@@ -72,11 +73,11 @@ class Stack {
       node = node.next;
     }
     let sortedStack = stack.sort();
-    this.top = null;
-    while(sortedStack.length > 0) {
+    while (sortedStack.length > 0) {
       let node = sortedStack.pop();
       this.push(node);
-  } return stack
+    }
+    return stack;
   }
 }
 
@@ -135,11 +136,11 @@ class Queue {
   findMax() {
     let dataArray = [];
     let node = this.first;
-    while(node) {
+    while (node) {
       dataArray.push(node.data);
       node = node.next;
     }
-    return Math.max(...dataArray)
+    return Math.max(...dataArray);
   }
 }
 
