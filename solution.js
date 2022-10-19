@@ -7,44 +7,20 @@ class Node {
     this.next = next;
   }
 }
-class LinkedList {
-  insert(value) {
-    let nodeToAdd = new Node(value);
-    if (!this.head) {
-      this.head = nodeToAdd;
-      return this.head;
-    } else {
-      nodeToAdd.next = this.head;
-      this.head = nodeToAdd;
-    }
-  }
-  removeFirst() {
-    let selectHead = this.head;
-    this.head = this.head.next;
-    return selectHead;
-  }
-}
 
 class Stack {
-  constructor(top) {
-    this.top = top;
-    this.words = [];
-    this.nums = [];
+  constructor() {
+    this.top = null;
+    this.size = 0;
   }
   isEmpty() {
-    /* if (this.top === null) {
-      return true;
-    } else if (this.top !== null) {
-      return false;
-    } */
-    return this.wordsStack.length === 0;
+    return this.top === null;
   }
   push(value) {
     const newNode = new Node(value);
     newNode.next = this.top;
     this.top = newNode;
-
-    //return this.listItems.insert(value);
+    return ++this.size;
   }
   pop() {
     let item = this.top;
@@ -53,6 +29,10 @@ class Stack {
       this.top = newTop;
       return item;
     }
+    this.size--;
+  }
+  size() {
+    return this.size;
   }
   peek() {
     if (this.top === null) {
@@ -61,20 +41,53 @@ class Stack {
       return this.top;
     }
   }
-  size() {
-    return words.length;
-  }
 }
 
 class Queue {
-  constructor(first, last, size, max) {
-    this.first = first;
-    this.last = last;
-    this.size = size;
+  constructor(max) {
+    this.first = null;
+    this.last = null;
+    this.size = 0;
     this.max = max;
   }
   enqueue(data) {
     let newEntry = new Node(data);
+    if (!this.first) {
+      this.first = newEntry;
+      this.last = newEntry;
+    } else {
+      this.last.next = newEntry;
+      this.last = newEntry;
+    }
+    return ++this.size;
+  }
+  dequeue() {
+    if (this.first === null) {
+      console.log('The queue is empty.');
+    }
+    const entry = this.first;
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size--;
+    return entry.data;
+  }
+  isEmpty() {
+    return this.first === null;
+  }
+  peek() {
+    if (this.first === null) {
+      console.log('Empty queue');
+    }
+    return this.first;
+  }
+  getLast() {
+    const lastNode = this.last;
+    return lastNode;
+  }
+  count() {
+    return this.size;
   }
 }
 
