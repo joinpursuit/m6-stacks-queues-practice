@@ -43,7 +43,15 @@ class Stack {
     return this.top;
   }
 
-  fidnMin() {}
+  findMin() {
+    let current = this.top.data;
+    while (current.next) {
+      if (current > current.next.data) {
+        current = current.next;
+      }
+    }
+    return current;
+  }
 }
 
 class Queue {
