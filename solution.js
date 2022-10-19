@@ -78,7 +78,6 @@ class Stack {
       return "Nothing to sort";
     }
     let tempStack = new Stack(); // temporary stack, will be sorted at end.
-    tempStack.push(this.pop().data); //push 1st node into temp
     while (this.top) {
       //while .this stack is not empty
       let element = this.pop().data; //copy of value(data) at top of current stack
