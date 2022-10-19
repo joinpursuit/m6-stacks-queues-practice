@@ -60,15 +60,41 @@ class Stack {
     return this.top
   }
 
+  // CONVERT TO ARRAY
+  toArray() {
+    let arr = [];
+    let item = this.top;
+    while (item) {
+      arr.push(item.data);
+      item = item.next;
+    }
+    return arr;
+  }
+
   // FIND MIN
   findMin() {
-    
+    let arr = this.toArray();
+    return Math.min(...arr);
   }
 
   // SORT 
   sort() {
+    let arr = this.toArray();
+    // let sortedArr = arr.sort();
+    // this.top = null;
+    // for(let i = sortedArr.length-1; i >= 0; i--) {
+    //   this.push(sortedArr[i])
+    // }
+    let sorted = arr.sort()
+    this.top = null
+    while(sorted.length > 0){
+      let item = sorted.pop()
+      this.push(item)
+    }
 
   }
+
+
 }
 
 // CREATE A QUEUE
@@ -81,7 +107,7 @@ class Queue {
 
   // COUNT 
   count() {
-
+    return this.size
   }
 
   // ENQUEUE
@@ -126,20 +152,26 @@ class Queue {
 
   // FIND MAX
   findMax() {
-
+    let array = [];
+    let item = this.first;
+    while(item) {
+      array.push(item.data);
+      item = item.next;
+    }
+    return Math.max(...array)
   }
 
   // GET LAST 
   getLast() {
-
+    return this.last;
   }
 
 
   
 }
 
-const stack = new Stack(nums);
-const queue = new Queue();
+// const stack = new Stack();
+// const queue = new Queue();
 // console.log(stack.size())
 // console.log(stack)
 
