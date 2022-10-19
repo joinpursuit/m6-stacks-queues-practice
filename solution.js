@@ -105,6 +105,41 @@ class Queue {
     this.size--;
     return item;
   }
+
+  count() {
+    let count = 0;
+    let current = this.first;
+    while (current) {
+      count++;
+      current = current.next;
+    }
+    return count;
+  }
+
+  peek() {
+    return this.first;
+  }
+
+  isEmpty() {
+    return !this.first;
+    //why doesn't this.first === null work?
+  }
+
+  getLast() {
+    return this.last;
+  }
+
+  findMax() {
+    let current = this.first;
+    let maxValue = 0;
+    while (current.next) {
+      if (maxValue < current.data) {
+        maxValue = current.data;
+        current = current.next;
+      }
+    }
+    return maxValue;
+  }
 }
 
 module.exports = {
