@@ -13,9 +13,9 @@ class Stack {
     this.top = top;
   }
   push(data) {
-    const newItem = new Node(data);
-    newItem.next = this.top;
-    this.top = newItem;
+    const newItem = new Node(data); //create new node
+    newItem.next = this.top; // set the new nodes NEXT value to point at "old" top
+    this.top = newItem; //set this.top to new node
   }
   size() {
     let count = 0;
@@ -32,7 +32,7 @@ class Stack {
     }
     let removed = this.top;
     if (removed) {
-      let newItem = removed.next;
+      let newItem = removed.next; //save the 'old' this.top next value
       this.top = newItem;
       return removed;
     }
@@ -52,7 +52,42 @@ class Stack {
     }
     return Math.min(...newArr);
   }
+
+  // sort() {
+  //   let length = this.size();
+  //   for (let i = 0; i < length; i++) {
+  //     let leftNode = this.top;
+  //     let rightNode = this.top.next;
+  //     for (let j = 0; j < length - 1 - i; j++) {
+  //       if (leftNode.data > rightNode.data) {
+  //         let data = [rightNode.data, leftNode.data];
+  //         leftNode.data = data[0];
+  //         rightNode.data = data[1];
+  //       }
+  //       if (rightNode.next) {
+  //         let tempNode = rightNode.next;
+  //         leftNode = rightNode;
+  //         rightNode = tempNode;
+  //       }
+  //     }
+  //   }
+  //   return this.top;
+  // }
+  sort() {
+    let tempStack = new Stack();
+    tempStack.push(this.pop().data);
+    while (this.top) {
+      let element = this.pop().data; //copy of value(data) at top of current stack & pop in one line
+      while (tempStack.top && tempStack.top.data < element) {
+        this.push(tempStack.pop().data);
+      }
+      tempStack.push(element);
+      //   console.log("tempstack after push", tempStack);
+    }
+    this.top = tempStack.top;
+  }
 }
+
 class Queue {
   constructor() {
     this.first = null;
