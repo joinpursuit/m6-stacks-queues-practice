@@ -65,18 +65,18 @@ class Stack {
   }
 
   sort() {
-    let dataArray = [];
+    let stack = [];
     let node = this.top;
     while (node) {
-      dataArray.push(node.data);
+      stack.push(node.data);
       node = node.next;
     }
-    let sortedArray = dataArray.sort();
+    let sortedStack = stack.sort();
     this.top = null;
-    while(sortedArray.length > 0) {
-      let node = sortedArray.pop();
+    while(sortedStack.length > 0) {
+      let node = sortedStack.pop();
       this.push(node);
-  } return dataArray
+  } return stack
   }
 }
 
