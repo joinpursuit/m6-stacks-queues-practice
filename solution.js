@@ -52,8 +52,27 @@ class Stack {
     }
     return current;
   }
-}
 
+  sort() {
+    let node = this.top;
+    let storedNodes = [];
+    while (node.next) {
+      storedNodes.unshift(node.data);
+      node = node.next;
+    }
+    storedNodes.sort((a, b) => {
+      if (a < b) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    this.top = null;
+    for (const storedNode of storedNodes) {
+      this.push(storedNode);
+    }
+  }
+}
 class Queue {
   constructor(first, last, size, max) {
     this.first = first;
