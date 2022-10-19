@@ -39,6 +39,10 @@ class Stack {
     return this.size() === 0;
   }
 
+  peek() {
+    return this.top;
+  }
+
   fidnMin() {}
 }
 
