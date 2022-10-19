@@ -52,7 +52,7 @@ class Stack {
     }
     return Math.min(...newArr);
   }
-
+  //BUBBLE SORT METHOD
   // sort() {
   //   let length = this.size();
   //   for (let i = 0; i < length; i++) {
@@ -74,17 +74,21 @@ class Stack {
   //   return this.top;
   // }
   sort() {
-    let tempStack = new Stack();
-    tempStack.push(this.pop().data);
-    while (this.top) {
-      let element = this.pop().data; //copy of value(data) at top of current stack & pop in one line
-      while (tempStack.top && tempStack.top.data < element) {
-        this.push(tempStack.pop().data);
-      }
-      tempStack.push(element);
-      //   console.log("tempstack after push", tempStack);
+    if (!this.top) {
+      return "Nothing to sort";
     }
-    this.top = tempStack.top;
+    let tempStack = new Stack(); // temporary stack, will be sorted at end.
+    tempStack.push(this.pop().data); //push 1st node into temp
+    while (this.top) {
+      //while .this stack is not empty
+      let element = this.pop().data; //copy of value(data) at top of current stack
+      while (tempStack.top && tempStack.top.data < element) {
+        //while tempstack is not empty & temp.top is less than element
+        this.push(tempStack.pop().data); // push top of temp stack back to .this stack
+      }
+      tempStack.push(element); // push element into temp stack if tempstack top is >
+    }
+    this.top = tempStack.top; //  jest test expects .this mutation // otherwise can just return tempstack
   }
 }
 
