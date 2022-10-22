@@ -48,10 +48,10 @@ class Stack {
 
   findMin() {
     let node = this.top;
-    let min = 0;
+    let min = this.top.data;
 
     while (node) {
-      if (node < node.next) {
+      if (min > node.next) {
         min = node.data;
       }
       node = node.next;
