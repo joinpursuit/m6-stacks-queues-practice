@@ -51,7 +51,7 @@ class Stack {
     let min = this.top.data;
 
     while (node) {
-      if (min > node.next) {
+      if (node.next < min) {
         min = node.data;
       }
       node = node.next;
