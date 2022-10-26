@@ -55,15 +55,33 @@ class Stack {
   }
 
   peek() {
-		return this.top;
-	}
-
+    return this.top;
+  }
 }
 
 class Queue {
   constructor() {
     this.first = null;
     this.last = null;
+  }
+
+  enqueue(val) {
+    const newNode = new Node(val);
+    if (!this.first) this.first = newNode;
+    else this.last.next = newNode;
+    this.last = newNode;
+  }
+
+  isEmpty() {
+    return this.first === null;
+  }
+
+  peek() {
+    return this.first;
+  }
+
+  getLast() {
+    return this.last;
   }
 }
 
