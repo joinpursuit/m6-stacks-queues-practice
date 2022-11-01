@@ -39,10 +39,6 @@ class Stack {
     return this.size() === 0;
   }
 
-  peek() {
-    return this.top;
-  }
-
   findMin() {
     let current = this.top.data;
     while (current.next) {
@@ -51,6 +47,9 @@ class Stack {
       }
     }
     return current;
+  }
+  peek() {
+    return this.top;
   }
 
   sort() {
@@ -82,18 +81,17 @@ class Queue {
     this.max = max;
   }
 
-  enqueue(data) {
-    const newNode = new Node(data);
-    if (!this.first) {
-      this.first = newNode;
-    } else {
-      this.last.next = newNode;
+  count() {
+    let count = 0;
+    let current = this.first;
+    while (current) {
+      count++;
+      current = current.next;
     }
-    this.last = newNode;
-    this.size++;
+    return count;
   }
 
-  dequeue(data) {
+  dequeue() {
     if (!this.first) {
       return null;
     }
@@ -106,27 +104,15 @@ class Queue {
     return item;
   }
 
-  count() {
-    let count = 0;
-    let current = this.first;
-    while (current) {
-      count++;
-      current = current.next;
+  enqueue(data) {
+    const newNode = new Node(data);
+    if (!this.first) {
+      this.first = newNode;
+    } else {
+      this.last.next = newNode;
     }
-    return count;
-  }
-
-  peek() {
-    return this.first;
-  }
-
-  isEmpty() {
-    return !this.first;
-    //why doesn't this.first === null work?
-  }
-
-  getLast() {
-    return this.last;
+    this.last = newNode;
+    this.size++;
   }
 
   findMax() {
@@ -139,6 +125,18 @@ class Queue {
       }
     }
     return maxValue;
+  }
+
+  getLast() {
+    return this.last;
+  }
+
+  isEmpty() {
+    return !this.first;
+  }
+
+  peek() {
+    return this.first;
   }
 }
 
